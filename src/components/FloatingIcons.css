@@ -1,0 +1,74 @@
+.floatIcons-section {
+  position: fixed;
+  top: 15%;
+  right: -155px;
+  min-width: 175px;
+  -webkit-box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background: #ffffff;
+  border-radius: 10px;
+  z-index: 999;
+  padding: 0;
+}
+.floatIcons-section .iconList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .cdoe-section h2 {
+    font-size: 15px;
+    display: none;
+  }
+  .col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    display: none;
+  }
+}
+.floatIcons-section .iconList > .item {
+  margin-bottom: 0.1rem;
+  position: relative;
+  right: 0;
+  transition: 0.3s;
+}
+.floatIcons-section .iconList > .item .link {
+  display: flex;
+  background: #ffffff;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px;
+  border-radius: 10px;
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+.floatIcons-section .iconList > .item1 .link {
+  display: flex;
+  background: #ffffff;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px;
+  border-radius: 0px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.floatIcons-section .iconList > .item .link .icon {
+  border-radius: 8px;
+  padding: 3px;
+}
+.floatIcons-section .iconList > .item:hover {
+  position: relative;
+  right: 150px;
+  transition: 0.3s;
+  -webkit-box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+@media (max-width: 769px) {
+  .floatIcons-section {
+    top: 220px;
+  }
+}

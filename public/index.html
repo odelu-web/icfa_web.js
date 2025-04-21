@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!------ Include the above in your HEAD tag ---------->
+    <script
+      src="https://app.wotnot.io/chat-widget/5UEA9osJPYZx0916128551387xGh7YMe.js"
+      defer
+    ></script>
+    <script>
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          let chatWindow = document.getElementById("chat-bot");
+          if (chatWindow) {
+            chatWindow.style.display = "block"; // Show the chat window
+          }
+        }, 5000); // 5 seconds delay
+      });
+    </script>
+    <style>
+      #chat-bot {
+        display: none;
+      }
+    </style>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,10 +44,172 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+    <meta name="twitter:image" content="%PUBLIC_URL%/favicon-300x300.png" />
+    <meta name="author" content="ICFAI" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="%PUBLIC_URL%/favicon.png"
+    />
+    <meta name="robots" content="all" />
+    <meta http-equiv="robots" content="index, all, follow" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="%PUBLIC_URL%/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="%PUBLIC_URL%/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="%PUBLIC_URL%/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="%PUBLIC_URL%/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="%PUBLIC_URL%/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="%PUBLIC_URL%/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="%PUBLIC_URL%/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="%PUBLIC_URL%/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%PUBLIC_URL%/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="%PUBLIC_URL%/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/favicon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="%PUBLIC_URL%/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%PUBLIC_URL%/favicon-16x16.png"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="%PUBLIC_URL%/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#393185" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://www.schema.org",
+        "@type": "Organization",
+        "name": "ICFAI Hyderabad Online MBA",
+        "url": "https://online.ifheindia.org/",
+        "logo": "https://testonline.ifheindia.org/static/media/IFHE-Logo.4199d155d56ef7fbce5408eb132b81cc.svg",
+        "description": "ICFAI Hyderabad Online MBA, is one of the top Best MBA Program in India. Top 10 MBA colleges in India. The ICFAI university has one of the best colleges of all over India, that offers courses in Online MBA.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ICFAI Foundation for Higher Education Campus, Donthanapally, Shankarapalli Road, Hyderabad - 501203, Telangana State, India.",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "501203",
+          "addressCountry": "India"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "08069592323",
+          "contactType": "enrol.cdoe@ifheindia.org"
+        }
+      }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XE1GBNDM66"
+    ></script>
+    <script>
+      setTimeout(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-XE1GBNDM66");
+      }, 50000);
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      setTimeout(function () {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({
+            "gtm.start": new Date().getTime(),
+            event: "gtm.js",
+          });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-W6ZZ83Z");
+      }, 50000);
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W6ZZ83Z"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -39,5 +221,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("%PUBLIC_URL%/icfai-sw.js").then(
+            function (registration) {
+              // Registration was successful
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            },
+            function (err) {
+              // registration failed :(
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    </script>
   </body>
 </html>

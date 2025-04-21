@@ -1,0 +1,117 @@
+.mainContent1 {
+  background: linear-gradient(76deg, #393185 0%, #564bb9 100%);
+  position: relative;
+  padding-top: 30px;
+  z-index: 1;
+  top: -15px;
+}
+.circle {
+  position: absolute;
+  content: "";
+  width: 280px;
+  height: 280px;
+  background: #ffffff0a;
+  border-radius: 50%;
+  top: 39%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.circle1 {
+  position: absolute;
+  content: "";
+  width: 400px;
+  height: 400px;
+  background: #ffffff1a;
+  border-radius: 50%;
+  top: 39%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.customCarousel .carousel-indicators {
+  position: absolute;
+  left: 0;
+  bottom: -53px;
+  left: 0;
+  z-index: 15;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: end;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.customCarousel .carousel-indicators button {
+  position: relative;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 16px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: rgba(115, 105, 255, 0.5);
+}
+.customCarousel .carousel-indicators .active {
+  background-color: #393185;
+}
+.accredationLogo {
+  height: 70px;
+  width: 70px;
+}
+.shape1 {
+  position: absolute;
+  right: 0px;
+  bottom: 38px;
+}
+
+.bg1 {
+  background: #e9f8f5;
+}
+.bg2 {
+  background: #fff8d1;
+}
+.bg3 {
+  background: #f8e9e9;
+}
+
+.testimonial .carousel-control-next-icon,
+.testimonial .carousel-control-prev-icon {
+  width: 17px;
+}
+.circleRibbon {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 50px solid #dfd3e4;
+  bottom: 9px;
+  left: -77px;
+}
+.cirleLine {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 10px solid #f8d4aa;
+  top: 80px;
+  right: -40px;
+}
+
+@media (max-width: 768px) {
+  .circle1 {
+    width: 260px;
+    height: 260px;
+  }
+  .circle {
+    width: 190px;
+    height: 190px;
+  }
+}
