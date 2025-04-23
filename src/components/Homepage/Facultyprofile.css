@@ -1,0 +1,30 @@
+.faculty-card:hover {
+  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.075);
+  border-color: #f5f5f5;
+  border-bottom: 2px solid #ffc107;
+}
+.faculty-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faculty-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #f1f1f1;
+  height: 100%;
+}
+
+.faculty-card h3 {
+  font-size: 20px;
+}
+
+.faculty-card strong {
+  color: #2a2a2a;
+}

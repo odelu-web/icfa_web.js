@@ -243,6 +243,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import path from "path";
+import bodyParser from "body-parser";
 import { connectionToDatabase } from "../lib/db.js";
 import sql from "mssql";
 
@@ -396,75 +397,134 @@ router.get("/dashboard", verifyToken, async (req, res) => {
   }
 });
 
-// Setup multer storage
-// Storage config for faculty images
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const dir = path.join(__dirname, "..", "public", "DataStore");
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    cb(null, dir);
-  },
-  filename: function (req, file, cb) {
-    const uniqueName = `faculty_${Date.now()}${path.extname(
-      file.originalname
-    )}`;
-    cb(null, uniqueName);
-  },
-});
-
-const upload = multer({ storage: storage });
-
 // ========== PROTECTED FACULTY PROFILE FORM ==========
+// Storage configuration for multer
 
 // Faculty profile submission endpoint OLD code without img
-router.post("/facultyprofileform", verifyToken, async (req, res) => {
-  const {
-    typecategory,
-    facultyname,
-    designation,
-    teaching,
-    research,
-    recognition,
-  } = req.body;
+// router.post("/facultyprofileform", verifyToken, async (req, res) => {
+//   const {
+//     typecategory,
+//     facultyname,
+//     designation,
+//     teaching,
+//     research,
+//     recognition,
+//   } = req.body;
 
-  // Capture client IP address
-  const ipAddress =
-    req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
+//   // Capture client IP address
+//   const ipAddress =
+//     req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
 
-  try {
-    const db = await connectionToDatabase();
+//   try {
+//     const db = await connectionToDatabase();
 
-    console.log("Received Faculty Profile Data:", req.body);
+//     console.log("Received Faculty Profile Data:", req.body);
 
-    // Generate a FacultyId (can be changed as needed)
-    const facultyId = `FAC${Date.now()}`; // Use a timestamp for uniqueness, or implement your own logic
+//     // Generate a FacultyId (can be changed as needed)
+//     const facultyId = `FAC${Date.now()}`; // Use a timestamp for uniqueness, or implement your own logic
 
-    await db
-      .request()
-      .input("facultyId", facultyId)
-      .input("typecategory", typecategory)
-      .input("facultyname", facultyname)
-      .input("designation", designation)
-      .input("teaching", teaching)
-      .input("IPAddress", ipAddress)
-      .input("research", research)
-      .input("recognition", recognition).query(`
-        INSERT INTO FacultyProfileNew
-        (FacultyId, typecategory, facultyname, designation, teaching, research, IPAddress, recognition)
-        VALUES (@facultyId, @typecategory, @facultyname, @designation, @teaching, @research, @IPAddress, @recognition)
-      `);
+//     await db
+//       .request()
+//       .input("facultyId", facultyId)
+//       .input("typecategory", typecategory)
+//       .input("facultyname", facultyname)
+//       .input("designation", designation)
+//       .input("teaching", teaching)
+//       .input("IPAddress", ipAddress)
+//       .input("research", research)
+//       .input("recognition", recognition).query(`
+//         INSERT INTO FacultyProfileNew
+//         (FacultyId, typecategory, facultyname, designation, teaching, research, IPAddress, recognition)
+//         VALUES (@facultyId, @typecategory, @facultyname, @designation, @teaching, @research, @IPAddress, @recognition)
+//       `);
 
-    res.status(200).send("Faculty profile submitted successfully.");
-  } catch (err) {
-    console.error("Faculty profile submission error:", err);
-    res
-      .status(500)
-      .send(`An error occurred while submitting the form: ${err.message}`);
-  }
+//     res.status(200).send("Faculty profile submitted successfully.");
+//   } catch (err) {
+//     console.error("Faculty profile submission error:", err);
+//     res
+//       .status(500)
+//       .send(`An error occurred while submitting the form: ${err.message}`);
+//   }
+// });
+// Storage configuration for multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    // Save images in the "uploads" directory
+    cb(null, path.join(__dirname, "../uploads"));
+  },
+  filename: (req, file, cb) => {
+    // Generate a unique filename using timestamp and file extension
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext);
+  },
 });
 
+const upload = multer({ storage });
+
+// Route for creating a new faculty profile
+router.post(
+  "/facultyprofileform",
+  verifyToken, // Ensure the user is authenticated before proceeding
+  upload.single("facultyImg"), // Handle the image upload
+  async (req, res) => {
+    // Ensure req.body exists and has the necessary data
+    if (!req.body) {
+      return res.status(400).send("No form data found.");
+    }
+
+    const {
+      typecategory,
+      facultyname,
+      designation,
+      teaching,
+      research,
+      recognition,
+    } = req.body;
+
+    // Check if any required field is missing
+    if (!typecategory || !facultyname || !designation) {
+      return res.status(400).send("Missing required fields.");
+    }
+
+    // Retrieve the IP address of the user
+    const ipAddress =
+      req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
+
+    // Extract the uploaded faculty image filename, or null if no file is uploaded
+    const facultyImg = req.file?.filename || null;
+
+    // Generate a unique FacultyId based on the current timestamp
+    const facultyId = `FAC${Date.now()}`;
+
+    try {
+      const db = await connectionToDatabase();
+
+      // Insert the new faculty profile data into the database
+      await db
+        .request()
+        .input("facultyId", facultyId)
+        .input("typecategory", typecategory)
+        .input("facultyname", facultyname)
+        .input("designation", designation)
+        .input("teaching", teaching)
+        .input("research", research)
+        .input("recognition", recognition)
+        .input("IPAddress", ipAddress)
+        .input("facultyImg", facultyImg).query(`
+          INSERT INTO FacultyProfileNew
+          (FacultyId, typecategory, facultyname, designation, teaching, research, recognition, IPAddress, facultyImg)
+          VALUES (@facultyId, @typecategory, @facultyname, @designation, @teaching, @research, @recognition, @IPAddress, @facultyImg)
+        `);
+
+      // Send success response
+      res.status(200).send("Faculty profile submitted successfully.");
+    } catch (err) {
+      // Log error and send failure response
+      console.error("Faculty profile submission error:", err);
+      res.status(500).send(`Error: ${err.message}`);
+    }
+  }
+);
 // POST route for submitting faculty profiles
 // router.post("/facultyprofileform", verifyToken, async (req, res) => {
 //   const {

@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import React from "react";
 import { Fancybox } from "@fancyapps/ui";
-
 import assets from "../assets/assets";
 import Seo from "../components/Seo";
 
@@ -176,7 +174,6 @@ const Teachingandlearning = () => {
         description="Learn how the ICFAI online MBA program provides a comprehensive education, equipping you with the skills and knowledge to excel in your career."
         keywords="IFHE, Online Teaching & Learning, Online MBA, online executive mba, mba finance online, e-learning, ICFAI, IBS, Distance and Online MBA, Executive MBA Programs in Hyderabad, HRM, Best Centre For Distance and Online Education in Hyderabad, Centre For Distance and Online Education, Executive MBA programs in India, MBA marketing online, Distance Online program, MBA in Financial Management, Services marketing, SMACS Technologies for Business, Strategic Marketing Management, MBA in International Marketing, MBA in Retail Management, MBA in Supply Chain Management, Big Data & Analytics, MBA in HR, MBA in Strategic Human Resource Management, Best distance learning University in India, Best Online MBA program in Hyderabad."
         canonical="https://online.ifheindia.org/program/teaching-and-learning"
-        ogUrl="https://online.ifheindia.org/program/teaching-and-learning"
       />
       <section className="Common-Section bg-light">
         <div className="container">

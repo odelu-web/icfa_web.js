@@ -32,7 +32,7 @@ const Research = () => {
 
       <section>
         <div className="container">
-          <div className="card border-0 bg3 shadow-sm rounded-4">
+          <div className="card border-0 alumniBg shadow-sm rounded-4">
             <div className="card-body p-4">
               <div className="row">
                 <div className="col-xl-7 col-lg-6 col-md-12 col-12">

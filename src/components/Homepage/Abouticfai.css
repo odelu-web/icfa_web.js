@@ -1,0 +1,12 @@
+.award-card {
+  border: 1px dashed #ccc;
+  background: #f8f7f2;
+}
+
+.award-card .blockquote {
+  font-size: 16px;
+}
+
+.award-card ul {
+  padding-left: 16px;
+}

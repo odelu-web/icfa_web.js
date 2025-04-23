@@ -14,6 +14,7 @@ const FacultyProfileForm = () => {
     teaching: "",
     research: "",
     recognition: "",
+    facultyImg: null,
   });
 
   const [errors, setErrors] = useState({});
@@ -79,6 +80,10 @@ const FacultyProfileForm = () => {
       formErrors.recognition = "Recognition is required.";
       isValid = false;
     }
+    if (!formData.facultyImg) {
+      formErrors.facultyImg = "faculty Img is required.";
+      isValid = false;
+    }
 
     setErrors(formErrors);
     return isValid;
@@ -127,7 +132,7 @@ const FacultyProfileForm = () => {
         <div className="col-md-12">
           <div className="card border-0 shadow-sm">
             <div className="card-body">
-              <form onSubmit={handleSubmit}>
+              <form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <h5>
                     {id ? "Update Faculty Profile" : "Create Faculty Profile"}
@@ -271,6 +276,25 @@ const FacultyProfileForm = () => {
                       {errors.recognition && (
                         <small className="text-danger">
                           {errors.recognition}
+                        </small>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="form-group mb-3">
+                      <label>Faculty Img</label>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        name="facultyImg"
+                        className="form-control"
+                        value={formData.facultyImg}
+                        onChange={handleChange}
+                      />
+                      {errors.facultyImg && (
+                        <small className="text-danger">
+                          {errors.facultyImg}
                         </small>
                       )}
                     </div>

@@ -99,6 +99,7 @@ const FacultyProfileList = () => {
                       <th>Teaching Area</th>
                       <th>Research</th>
                       <th>Recognition</th>
+                      <th>IMg</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -111,6 +112,7 @@ const FacultyProfileList = () => {
                         <td>{profile.teaching}</td>
                         <td>{profile.research}</td>
                         <td>{profile.recognition}</td>
+                        <td>{profile.facultyImg}</td>
                         <td>
                           <Link
                             to={`/dashboard/editfacultyprofile/${profile.FacultyId}`}

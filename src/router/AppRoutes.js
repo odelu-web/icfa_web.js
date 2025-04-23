@@ -55,6 +55,12 @@ import FacultyProfileForm from "../components/FacultyProfileForm";
 import FacultyProfileTable from "../components/FacultyProfileTable";
 import EditFacultyProfileForm from "../components/EditFacultyProfileForm";
 
+import SpotLight from "../pages/SpotLight";
+import OnlineMbaForProfessionals from "../pages/OnlineMbaForProfessionals";
+import OnlineMbaForEntrepreneurs from "../pages/OnlineMbaForEntrepreneurs";
+import OnlineMbaForFreshers from "../pages/OnlineMbaForFreshers";
+import ImageUploadForm from "../components/ImageUploadForm";
+
 const DomComp = lazy(() => import("../DomComp"));
 
 const AppRoutes = () => {
@@ -120,7 +126,6 @@ const AppRoutes = () => {
             path="/career"
             element={<Navigate to="/program/career" replace />}
           />
-
           {/* About Us */}
           <Route path="/about-us/the-icfai-group" element={<Theicfaigroup />} />
           <Route
@@ -138,18 +143,15 @@ const AppRoutes = () => {
             path="/about-us/the-icfai-group/about-icfai"
             element={<Abouticfai />}
           />
-
           {/* Program Routes */}
           {programRoutes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
-
           {/* Happenings Section */}
           <Route path="/happenings/webinar" element={<Webinars />} />
           <Route path="/happenings/newsletter" element={<Newsletter />} />
           <Route path="/happenings/media" element={<Media />} />
           <Route path="/happenings/news" element={<News />} />
-
           {/* Admin Pages */}
           <Route path="/register" element={<Register />} />
           <Route path="/loginpage" element={<Loginpage />} />
@@ -170,7 +172,6 @@ const AppRoutes = () => {
             path="/dashboard/editfacultyprofile/:id"
             element={<EditFacultyProfileForm />}
           />
-
           {/* General Pages */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/admissions" element={<Admissions />} />
@@ -180,15 +181,28 @@ const AppRoutes = () => {
           />
           <Route path="/privacy-policy" element={<Privacypolicy />} />
           <Route path="/search-result" element={<SearchResult />} />
-
           <Route path="/thankyou" element={<ThankYou />} />
+          <Route path="/ImageUploadForm" element={<ImageUploadForm />} />
 
+          <Route
+            path="/online-mba-for-freshers"
+            element={<OnlineMbaForFreshers />}
+          />
+          <Route
+            path="/online-mba-for-entrepreneurs"
+            element={<OnlineMbaForEntrepreneurs />}
+          />
+          <Route
+            path="/online-mba-for-professionals"
+            element={<OnlineMbaForProfessionals />}
+          />
+          <Route path="/happenings/spotlight" element={<SpotLight />} />
+          <Route path="/search-result" element={<SearchResult />} />
           {/* Protected Route */}
           <Route
             path="/admin"
             element={<ProtectedRoute element={<ProtectComponet />} />}
           />
-
           {/* BBA Routes */}
           {BbaRoutes}
         </Routes>

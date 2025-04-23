@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import assets from "../assets/assets";
 import Seo from "../components/Seo";
-
 const Programstructure = () => {
   const AccordionItem = ({ id, title, tableData, striped }) => (
     <div className="accordion-item">
@@ -342,10 +341,9 @@ const Programstructure = () => {
     <>
       <Seo
         title="Online MBA Admissions | Best Online MBA in India"
-        description="Why ICFAI Online MBA is considered as the Top Online MBA in India? Program Structure and Delivery make it as the Top Online MBA Course in India."
+        description="Why ICFAI Online MBA is considered as the Top Online MBA in India? Program Structure and Delivery make it as the Top Online MBA Course in India. "
         keywords="IFHE Hyderabad, top online mba programs, best online mba, best online mba program, ICFAI University, Unique Learning Proposition, Distance Online MBA Course in India, Online MBA Program for working executives and professionals, IBS Online MBA, MBA Rankings, NAAC Accredited MBA Program in India, C in C Framework, MBA, Online MBA, Executive MBA Programs in Hyderabad, Executive MBA programs in India, MBA marketing online, Distance Online program, MBA in Financial Management, Services marketing, SMACS Technologies for Business, Strategic Marketing Management, MBA in International Marketing, Retail Management, MBA in Supply Chain Management, Big Data & Analytics, MBA in HR, MBA in Strategic Human Resource Management,  Best distance learning University in India, Best Online MBA program in Hyderabad."
         canonical="https://online.ifheindia.org/program/program-structure"
-        ogUrl="https://online.ifheindia.org/program/program-structure"
       />
       <section className="Common-Section bg-light">
         <div className="container">

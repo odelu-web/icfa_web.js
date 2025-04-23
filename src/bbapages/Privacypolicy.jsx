@@ -46,7 +46,7 @@ const Privacypolicy = () => {
                   <p>
                     In general, you can visit{" "}
                     <a
-                      class="text-danger"
+                      className="text-danger"
                       href="https://online.ifheindia.org/"
                       target="_blank"
                     >
@@ -85,7 +85,7 @@ const Privacypolicy = () => {
                     and the users are free to opt-out or unsubscribe at any time
                     they want to. To be removed from the list send an email to
                     <a
-                      class="text-danger"
+                      className="text-danger"
                       href="mailto:newsletter.cdoe@ifheindia.org"
                     >
                       {" "}
@@ -107,7 +107,7 @@ const Privacypolicy = () => {
                     these demands. Mistakes are possible; miscommunication is
                     possible. If you have any comments, suggestions or questions
                     regarding our privacy policy, please contact us at
-                    <a class="text-danger" href="enrol.cdoe@ifheindia.org">
+                    <a className="text-danger" href="enrol.cdoe@ifheindia.org">
                       {" "}
                       enrol.cdoe@ifheindia.org
                     </a>{" "}
@@ -115,7 +115,7 @@ const Privacypolicy = () => {
                   </p>
                   <p>
                     <a
-                      class="text-danger"
+                      className="text-danger"
                       target="_blank"
                       href="https://online.ifheindia.org/"
                     >
@@ -157,7 +157,7 @@ const Privacypolicy = () => {
                     This website, including all content and functions made
                     available on this site,
                     <a
-                      class="text-danger"
+                      className="text-danger"
                       href="https://online.ifheindia.org/"
                       target="_blank"
                     >
@@ -167,7 +167,7 @@ const Privacypolicy = () => {
                     Foundation for Higher Education, and payment gateway of IFHE
                     namely{" "}
                     <a
-                      class="text-danger"
+                      className="text-danger"
                       href="http://www.secure.ifheindia.org/"
                       target="_blank"
                     >

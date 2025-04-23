@@ -8,46 +8,56 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 
 const Header = () => {
-  const navbarRef = useRef(null);
-  const togglerRef = useRef(null);
-
-  const [openMenu, setOpenMenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const menuRefs = useRef({});
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const shouldAddScrolled = !isHomePage || scrolled;
 
+  const navbarRef = useRef(null);
+  const togglerRef = useRef(null);
+  const menuRefs = useRef({});
+
+  // Toggle dropdown menu
   const toggleMenu = (menu) => {
     setOpenMenu(openMenu === menu ? null : menu);
   };
 
+  // Handle scroll (and resize)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 1200) {
+        setScrolled(true); // Always scrolled on small screens
       } else {
-        setScrolled(false);
+        setScrolled(window.scrollY > 0);
       }
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
-  // Close menu when clicking outside
+  // Collapse navbar on route change
+  useEffect(() => {
+    setNavbarOpen(false);
+  }, [location]);
+
+  // Collapse dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       const clickedOutsideAll = Object.values(menuRefs.current).every(
         (ref) => ref && !ref.contains(event.target)
       );
-
-      if (clickedOutsideAll) {
-        setOpenMenu(null);
-      }
+      if (clickedOutsideAll) setOpenMenu(null);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -56,59 +66,22 @@ const Header = () => {
     };
   }, []);
 
-  //  Close menu when click the out side and location changes
-
+  // Collapse navbar on outside click
   useEffect(() => {
-    const navbar = document.querySelector(".navbar-collapse");
-    const toggler = document.querySelector(".navbar-toggler");
-
-    if (navbar?.classList.contains("show") && toggler) {
-      toggler.click(); // Close the navbar
-    }
-  }, [location]);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const navbar = navbarRef.current;
-      const toggler = togglerRef.current;
-
+    const handleClickOutsideNavbar = (event) => {
       if (
-        navbar &&
-        toggler &&
-        navbar.classList.contains("show") &&
-        !navbar.contains(event.target) &&
-        !toggler.contains(event.target)
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target) &&
+        togglerRef.current &&
+        !togglerRef.current.contains(event.target)
       ) {
-        toggler.click(); // Collapse the navbar
+        setNavbarOpen(false);
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
-
+    document.addEventListener("mousedown", handleClickOutsideNavbar);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const screenWidth = window.innerWidth;
-
-      if (screenWidth < 1200) {
-        setScrolled(true); // always true on small screens
-      } else {
-        setScrolled(window.scrollY > 0); // true only after scroll on large screens
-      }
-    };
-
-    // Initial check on mount
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll); // in case screen size changes
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutsideNavbar);
     };
   }, []);
 
@@ -126,7 +99,6 @@ const Header = () => {
                   <img
                     className="img-fluid mainlogo"
                     width="260"
-                    // style={{ maxWidth: '260px', width: '100%' }}
                     src={` ${
                       shouldAddScrolled ? assets.ifhelogo : assets.ifhelogowhite
                     }`}
@@ -138,10 +110,7 @@ const Header = () => {
                 <button
                   className="navbar-toggler mobile-toggler"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNav"
-                  aria-controls="navbarNav"
-                  aria-expanded="false"
+                  onClick={() => setNavbarOpen((prev) => !prev)}
                   aria-label="Toggle navigation"
                   ref={togglerRef}
                 >
@@ -149,7 +118,9 @@ const Header = () => {
                 </button>
                 {/* Navbar Links */}
                 <div
-                  className="collapse mainBlueColor navbar-collapse"
+                  className={`navbar-collapse mainBlueColor collapse ${
+                    navbarOpen ? "show" : ""
+                  }`}
                   id="navbarNav"
                   ref={navbarRef}
                 >
@@ -367,6 +338,9 @@ const Header = () => {
                             </li>
                             <li className="liItem">
                               <Link to="/happenings/news">News</Link>
+                            </li>
+                            <li className="liItem">
+                              <Link to="/happenings/spotlight">Spotlight</Link>
                             </li>
                           </ul>
                         )}

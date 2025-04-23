@@ -1,16 +1,16 @@
 import React from "react";
 import assets from "../assets/assets";
 import Seo from "../components/Seo";
-const Alumni = () => {
+export default function Alumni() {
   return (
     <>
       <Seo
         title="ICFAI | Alumni Reunions | IBS | FST | FOL | Online MBA"
-        description="ICFAI encourages each faculty to develop its own alumni network. IBS Hyderabad, 
-      the Faculty Science and Technology and the Faculty of Law conduct Alumni events"
+        description="ICFAI encourages each faculty to develop its own alumni network. IBS Hyderabad, the Faculty Science and Technology and the Faculty of Law conduct Alumni events"
         keywords="IFHE, Alumni Reunions, IBS, Faculty of Science & Technology, Faculty Of Law, Online MBA, Best Centre for Innovation Entrepreneurship and Incubation, Online Payment Options, Distance and Online MBA, Executive MBA Programs in Hyderabad, HRM, Best Centre For Distance and Online Education in Hyderabad, Centre For Distance and Online Education, Executive MBA programs in India, MBA marketing online, Distance Online program, MBA in Financial Management, Services marketing, SMACS Technologies for Business, Strategic Marketing Management, MBA in International Marketing, MBA in Retail Management, MBA in Supply Chain Management, Big Data & Analytics, MBA in HR, MBA in Strategic Human Resource Management, Best distance learning University in India, Best Online MBA program in Hyderabad."
-        canonical="https://online.ifheindia.org/about-us/alumni"
+        canonical="https://online.ifheindia.org/ "
       />
+
       <section className="Common-Section bg-light">
         <div className="container">
           <div className="row">
@@ -29,9 +29,9 @@ const Alumni = () => {
         </div>
       </section>
 
-      <section>
+      <section className="">
         <div className="container">
-          <div className="card border-0 bg3 shadow-sm rounded-4">
+          <div className="card border-0 alumniBg shadow-sm rounded-4">
             <div className="card-body p-4">
               <div className="row">
                 <div className="col-xl-7 col-lg-6 col-md-12 col-12">
@@ -64,7 +64,7 @@ const Alumni = () => {
 
       <section>
         <div className="container">
-          <div className="card border-0 bg1 shadow-sm rounded-4">
+          <div className="card border-0 bgAccreditation shadow-sm rounded-4">
             <div className="card-body p-4">
               <div className="row">
                 <div className="col-md-3 col-lg-3 col-xl-3 col-12">
@@ -106,6 +106,4 @@ const Alumni = () => {
       </section>
     </>
   );
-};
-
-export default Alumni;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import assets from "../assets/assets";
 import Seo from "../components/Seo";
 
-const Facultydevelopmentprogram = () => {
+export default function Facultydevelopmentprogram() {
   return (
     <>
       <Seo
@@ -10,7 +10,6 @@ const Facultydevelopmentprogram = () => {
         description="The faculty members who support the Online MBA program undergo periodic Faculty Development Programs through the ICFAI Staff College, a constituent of the IFHE."
         keywords="IFHE, Best Faculty Development Program, CDOE, Online MBA, Distance and Online MBA, Executive MBA Programs in Hyderabad, HRM, Best Centre For Distance and Online Education in Hyderabad, Centre For Distance and Online Education, Executive MBA programs in India, MBA marketing online, Distance Online program, MBA in Financial Management, Services marketing, MBA in International Marketing, MBA in Retail Management, MBA in Supply Chain Management, Big Data & Analytics, MBA in HR, MBA in Strategic Human Resource Management, Best distance learning University in India, Best Online MBA program in Hyderabad."
         canonical="https://online.ifheindia.org/about-us/faculty-development-program"
-        ogUrl="https://online.ifheindia.org/about-us/faculty-development-program"
       />
       <section className="Common-Section bg-light">
         <div className="container">
@@ -72,6 +71,4 @@ const Facultydevelopmentprogram = () => {
       </section>
     </>
   );
-};
-
-export default Facultydevelopmentprogram;
+}
